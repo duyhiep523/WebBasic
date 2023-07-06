@@ -37,5 +37,5 @@ function count(sos) {
         err.textContent = "";
         err.style.display = "none"
     }, 3000)
-
+    
 }
