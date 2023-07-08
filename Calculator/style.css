@@ -1,0 +1,37 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    background: url(img/ios-16-stock-ipados-16-gradient-background-dark-mode-4480x2520-8134.png);
+    background-size: cover;
+}
+
+main {
+    width: 400px;
+    border-radius: 20px;
+}
+
+#write,
+#result {
+    height: 72px;
+    font-size: 50px;
+    font-weight: bold;
+    overflow: hidden;
+
+}
+
+button {
+    width: 85px;
+    height: 85px;
+}
+
+#btn0 {
+    width: 175px;
+    border-radius: 50px;
+    padding-left: 32px;
+}
+
+.btn {
+    font-size: 32px;
+    font-weight: bold;
+
+}

@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/JQuery/code.jquery.com_jquery-3.7.0.min.js"></script>
     <title>Document</title>
 </head>
+
 <body>
+
+    <p></p>
+    <button class="tang">tang</button>
+    <button class="giam">giam</button>
+    <div class="hehe">
+
+    </div>
     <script>
-        $(document).ready(function(){
-            alert(":))))")
+        var count = 0;
+        $(document).ready(function () {
+            $('.tang').click(function () {
+                count++;
+                $('p').text(count)
+                $('p').css('color', 'red')
+            })
+            $('.giam').click(function () {
+                count--;
+                $('p').text(count)
+                $('p').css('color', 'blue')
+            })
+            $(".hehe").html(`<p>heh</p>`)
         })
+
     </script>
 </body>
+
 </html>
