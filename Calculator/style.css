@@ -1,7 +1,7 @@
 body {
     width: 100vw;
     height: 100vh;
-    background: url(img/ios-16-stock-ipados-16-gradient-background-dark-mode-4480x2520-8134.png);
+    background: url(img/toi.jpg);
     background-size: cover;
 }
 
@@ -34,4 +34,48 @@ button {
     font-size: 32px;
     font-weight: bold;
 
+}
+
+
+
+/* sáng tối */
+* {
+    transition: 1.25s;
+}
+.btn1 {
+    top: 20px;
+    right: 10px;
+    width: 100px;
+    height: 40px;
+    border: 5px solid black;
+    border-radius: 25px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    background-color: black;
+}
+
+
+
+.icon {
+    width: 28px;
+    height: 28px;
+    background-color: blue;
+    border-radius: 100%;
+    margin-left: 52px;
+
+}
+
+.dark {
+    background: none;
+}
+
+.dark2 {
+    background: url(img/sang.jpg);
+    background-size: cover;
+
+}
+
+.dark1 {
+    margin-left: 0px;
 }
