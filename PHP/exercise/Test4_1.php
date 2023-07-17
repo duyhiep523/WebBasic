@@ -1,28 +1,34 @@
+<?php
+
+if (isset($_POST['btn_login'])) {
+    echo $_POST['name'] . "<br>" . $_POST['pass'];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>Document</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <form action="" method="post">
-      user
-      <input type="text" name="name" />
-      <br />
-      pass
-      <input type="text" name="pass" />
-      <br />
-      <input type="submit" name="btn_login" />
+        user
+        <input type="text" name="name" />
+        <br />
+        pass
+        <input type="text" name="pass" />
+        <br />
+        <input type="submit" name="btn_login" />
     </form>
-  </body>
+</body>
+
 </html>
