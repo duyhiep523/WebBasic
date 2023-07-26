@@ -1,13 +1,10 @@
 <?php
-
 require 'inc/header.php';
-?>
-<main>
-    <div class="container-fluid ">
-        <p class="text-center bg-success" height="500">content</p>
-    </div>
-</main>
-<?php
-
-// require 'inc/footer.php';
-?>
+$path = isset($_GET['page']) ? $_GET['page'] : 'home';
+$file= 'page/' . $path . '.php';
+if(file_exists($file)){
+    require $file;
+}else{
+    require 'inc/404.php';
+}
+require 'inc/footer.php';
