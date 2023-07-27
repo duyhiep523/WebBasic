@@ -2,12 +2,11 @@
 require 'function_login.php';
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Bootstrap Example</title>
+    <title>Login</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -19,7 +18,7 @@ require 'function_login.php';
     <style>
         #form-login {
             margin: auto;
-            width: 500px;
+            max-width: 500px;
             border-radius: 5px;
             padding: 10px 30px 30px 30px;
         }
