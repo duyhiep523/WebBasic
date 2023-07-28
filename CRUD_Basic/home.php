@@ -165,38 +165,6 @@ if (isset($_POST['btn_dele'])) {
                     return false;
                 }
             })
-            // $("#btn_dele").click(function() {
-            //     let product_name = $('#product_name');
-            //     let price = $('#price');
-            //     let alertError = $(".asdf");
-
-            //     function alert_error(msg) {
-            //         alertError.removeClass("d-none");
-            //         alertError.text(msg);
-            //         setTimeout(function() {
-            //             alertError.addClass("d-none");
-            //         }, 3000);
-            //     }
-            //     if (product_name.val() == "") {
-            //         alert_error("Tên bị trống");
-            //         product_name.focus();
-            //         return false;
-            //     }
-            //     if (price.val() == "" || isNaN(parseFloat(price.val()))) {
-            //         alert_error("Giá bị trống hoặc sai định dạng");
-            //         price.focus();
-            //         return false;
-            //     }
-            // })
-            // let check_php = $("#error-php");
-            // if (check_php.length > 0) {
-            //     alert_error("Sai thông tin đăng nhập");
-            //     return false;
-            // }
-            // $(".hidee").click(function() {
-            //     event.stopPropagation();
-            //     $("#max_screen").toggleClass("hiddden");
-            // });
             $(document).on("click", function(event) {
                 if (
                     !$("#form_control").is(event.target) &&
@@ -207,17 +175,14 @@ if (isset($_POST['btn_dele'])) {
             });
             $(".hidee").click(function(event) {
                 event.stopPropagation();
-                // Xóa lớp "selected-row" khỏi tất cả các hàng và thêm nó vào hàng vừa được chọn
                 $(".hidee").removeClass("selected-row");
                 $(this).addClass("selected-row");
-                // Đẩy dữ liệu lên #form_control
                 let product_id = $(this).find("td:nth-child(2)").text();
                 let product_name = $(this).find("td:nth-child(3)").text();
                 let price = $(this).find("td:nth-child(4)").text();
                 $("#product_id").val(product_id);
                 $("#product_name").val(product_name);
                 $("#price").val(price);
-                // Hiển thị #form_control
                 $("#max_screen").removeClass("hiddden");
             });
             return true;

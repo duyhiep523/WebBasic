@@ -3,6 +3,7 @@ session_start();
 require 'connection.php';
 if (isset($_POST['btn-login'])) {
     if (!empty($_POST['userName']) && !empty($_POST['password'])) {
+        $error_no_user = "";
         $username = $_POST['userName'];
         $password = $_POST['password'];
         if (getUser(trim($username), md5($password))) {
@@ -14,6 +15,7 @@ if (isset($_POST['btn-login'])) {
         }
     }
 }
+
 ?>
 
 
@@ -61,7 +63,8 @@ if (isset($_POST['btn-login'])) {
                     <a href="" class="text-decoration-none">Quên mật khẩu?</a>
                 </div>
                 <div class="border border-Secondary mt-2"></div>
-                <input type="button" class="btn btn-warning mt-3" value="Tạo tài khoản" />
+
+                <p class="btn btn-warning mt-3 "><a href="register.php" class="text-decoration-none text-dark">Tạo tài khoản</a></p>
             </div>
         </form>
     </div>

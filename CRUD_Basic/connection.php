@@ -61,10 +61,8 @@ function updateProduct($product_id, $product_name, $price)
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sds", $product_name, $price, $product_id);
         $stmt->execute();
-        echo $sql;
         return true;
     } catch (Exception $e) {
-        echo "tra ve sai";
         return false;
     }
 }
@@ -78,6 +76,19 @@ function deleProduct($product_id)
         $stmt->bind_param("i", $product_id);
         $stmt->execute();
         echo $sql;
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+function addUser($phone_number, $account_name, $account_password)
+{
+    global $conn;
+    $sql = "INSERT INTO system_users (phone_number, account_name, account_password) VALUES(?,?,?)";
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('sss', $phone_number, $account_name, $account_password);
+        $stmt->execute();
         return true;
     } catch (Exception $e) {
         return false;
