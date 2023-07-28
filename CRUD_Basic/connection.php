@@ -53,3 +53,33 @@ function getProduct()
     }
     return null;
 }
+function updateProduct($product_id, $product_name, $price)
+{
+    global $conn;
+    $sql = "update product set product_name=? , price=? where product_id = ?";
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sds", $product_name, $price, $product_id);
+        $stmt->execute();
+        echo $sql;
+        return true;
+    } catch (Exception $e) {
+        echo "tra ve sai";
+        return false;
+    }
+}
+
+function deleProduct($product_id)
+{
+    global $conn;
+    $sql = "delete from product where product_id = ?";
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $product_id);
+        $stmt->execute();
+        echo $sql;
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}

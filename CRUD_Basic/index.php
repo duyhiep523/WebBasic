@@ -2,17 +2,15 @@
 session_start();
 require 'connection.php';
 if (isset($_POST['btn-login'])) {
-    $error_no_user = "";
     if (!empty($_POST['userName']) && !empty($_POST['password'])) {
         $username = $_POST['userName'];
         $password = $_POST['password'];
         if (getUser(trim($username), md5($password))) {
             $_SESSION['is_login'] = true;
             $_SESSION['user_login'] = $username;
-
             header('Location: home.php');
         } else {
-            $error_no_user = "<p class='alert alert-danger mt-2'>không tồn tại người dùng</p>";
+            $error_no_user = "<p class='alert alert-danger mt-2 d-none' id='error-php'>ádf</p>";
         }
     }
 }
@@ -41,7 +39,8 @@ if (isset($_POST['btn-login'])) {
             padding: 10px 30px 30px 30px;
         }
 
-        form input[type="text"] {
+        form input[type="text"],
+        form input[type="password"] {
             height: 50px;
             border: 1px solid black;
             border-radius: 5px;
@@ -52,7 +51,7 @@ if (isset($_POST['btn-login'])) {
             <div class="row">
                 <h1 class="text-center text-primary fw-bold">Đăng nhập</h1>
                 <input type="text" class="mt-2" placeholder="User" name="userName" id="user" /><br />
-                <input type="text" class="mt-3" placeholder="Password" name="password" id="pass" /><br />
+                <input type="password" class="mt-3" placeholder="Password" name="password" id="pass" /><br />
                 <input type="submit" class="btn btn-primary mt-3" value="Đăng nhập" name="btn-login" />
                 <div class="mt-2 text-center">
                     <p class="alert alert-danger mt-2 d-none" id="alert"></p>
@@ -75,8 +74,8 @@ if (isset($_POST['btn-login'])) {
 
                 function alert_error(msg) {
                     alertError.removeClass("d-none");
-                    setTimeout(() => {
-                        alertError.text(msg);
+                    alertError.text(msg);
+                    setTimeout(function() {
                         alertError.addClass("d-none");
                     }, 3000);
                 }
@@ -88,6 +87,11 @@ if (isset($_POST['btn-login'])) {
                 if (pass.val() == "") {
                     alert_error("Mật khẩu bị trống");
                     pass.focus();
+                    return false;
+                }
+                let check_php = $("#error-php");
+                if (check_php.length > 0) {
+                    alert_error("Sai thông tin đăng nhập");
                     return false;
                 }
                 return true;

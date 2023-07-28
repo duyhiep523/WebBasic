@@ -9,7 +9,24 @@ if (isset($_POST['btn_logout'])) {
     header('Location: index.php');
 }
 
+
+if (isset($_POST['btn_save'])) {
+    $id = $_POST['product_id'];
+    $name =  $_POST['product_name'];
+    $price = $_POST['price'];
+    if (updateProduct($id, $name, $price)) {
+        header("Location: " . $_SERVER['PHP_SELF']);
+    }
+}
+if (isset($_POST['btn_dele'])) {
+    $id = $_POST['product_id'];
+    echo $id;
+    if (deleProduct($id)) {
+        header("Location: " . $_SERVER['PHP_SELF']);
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,9 +36,64 @@ if (isset($_POST['btn_logout'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 </head>
+<style>
+    body {
+        position: relative;
+    }
+
+    #max_screen {
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hiddden {
+        visibility: hidden;
+    }
+
+    #form_control {
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 500px;
+        padding: 20px 40px;
+        border: 2px solid black;
+        background-color: #92b9e3;
+        position: absolute;
+    }
+</style>
 
 <body>
+
+    <div id="max_screen" class="hiddden">
+        <form action="" method="POST" id="form_control">
+            <div class="row">
+                <label for="" class="col-4">Mã sản phẩm</label>
+                <input type="" class="col-8 mb-2" value="adss" readonly name="product_id" id="product_id" />
+                <br />
+                <label for="" class="col-4">Tên</label>
+                <input type="text" class="col-8 mb-2" value="" name="product_name" id="product_name" />
+                <br />
+                <label for="" class="col-4">Giá</label>
+                <input type="text" class="col-8 mb-2" value="" name="price" id="price" />
+                <br />
+                <p class="alert alert-danger mt-2 d-none asdf" id="error-php">
+                    Không tồn tại người dùng
+                </p>
+                <input type="submit" class="col-6 btn btn-primary" value="Lưu" name="btn_save" id="btn_save" />
+                <input type="submit" class="col-6 btn btn-danger" value="Xóa" name="btn_dele" id="btn_dele" />
+            </div>
+        </form>
+    </div>
+
+
 
     <div class="container-fluid bg-dark text-light text-center">
         <div class="row">
@@ -54,7 +126,7 @@ if (isset($_POST['btn_logout'])) {
                     foreach ($arr as $value) {
                         $count++;
                     ?>
-                        <tr>
+                        <tr class="hidee selected-row">
                             <td><?php echo  $count; ?></td>
                             <td><?php echo  $value['product_id']; ?></td>
                             <td><?php echo  $value['product_name']; ?></td>
@@ -68,6 +140,89 @@ if (isset($_POST['btn_logout'])) {
         } ?>
 
     </div>
+    <script>
+        $(document).ready(function() {
+            $("#btn_save").click(function() {
+                let product_name = $('#product_name');
+                let price = $('#price');
+                let alertError = $(".asdf");
+
+                function alert_error(msg) {
+                    alertError.removeClass("d-none");
+                    alertError.text(msg);
+                    setTimeout(function() {
+                        alertError.addClass("d-none");
+                    }, 3000);
+                }
+                if (product_name.val() == "") {
+                    alert_error("Tên bị trống");
+                    product_name.focus();
+                    return false;
+                }
+                if (price.val() == "" || isNaN(parseFloat(price.val()))) {
+                    alert_error("Giá bị trống hoặc sai định dạng");
+                    price.focus();
+                    return false;
+                }
+            })
+            // $("#btn_dele").click(function() {
+            //     let product_name = $('#product_name');
+            //     let price = $('#price');
+            //     let alertError = $(".asdf");
+
+            //     function alert_error(msg) {
+            //         alertError.removeClass("d-none");
+            //         alertError.text(msg);
+            //         setTimeout(function() {
+            //             alertError.addClass("d-none");
+            //         }, 3000);
+            //     }
+            //     if (product_name.val() == "") {
+            //         alert_error("Tên bị trống");
+            //         product_name.focus();
+            //         return false;
+            //     }
+            //     if (price.val() == "" || isNaN(parseFloat(price.val()))) {
+            //         alert_error("Giá bị trống hoặc sai định dạng");
+            //         price.focus();
+            //         return false;
+            //     }
+            // })
+            // let check_php = $("#error-php");
+            // if (check_php.length > 0) {
+            //     alert_error("Sai thông tin đăng nhập");
+            //     return false;
+            // }
+            // $(".hidee").click(function() {
+            //     event.stopPropagation();
+            //     $("#max_screen").toggleClass("hiddden");
+            // });
+            $(document).on("click", function(event) {
+                if (
+                    !$("#form_control").is(event.target) &&
+                    $("#form_control").has(event.target).length === 0
+                ) {
+                    $("#max_screen").addClass("hiddden");
+                }
+            });
+            $(".hidee").click(function(event) {
+                event.stopPropagation();
+                // Xóa lớp "selected-row" khỏi tất cả các hàng và thêm nó vào hàng vừa được chọn
+                $(".hidee").removeClass("selected-row");
+                $(this).addClass("selected-row");
+                // Đẩy dữ liệu lên #form_control
+                let product_id = $(this).find("td:nth-child(2)").text();
+                let product_name = $(this).find("td:nth-child(3)").text();
+                let price = $(this).find("td:nth-child(4)").text();
+                $("#product_id").val(product_id);
+                $("#product_name").val(product_name);
+                $("#price").val(price);
+                // Hiển thị #form_control
+                $("#max_screen").removeClass("hiddden");
+            });
+            return true;
+        });
+    </script>
 </body>
 
 </html>
