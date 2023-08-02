@@ -1,11 +1,11 @@
 <?php
+
 $servername = "localhost";
 $username = "root";
 $password = "123456789";
 $dbname = "crud_basic";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -29,6 +29,7 @@ function getUser($user_text, $pass_text)
     }
     return false;
 }
+
 function getProduct()
 {
     global $conn;
@@ -53,6 +54,7 @@ function getProduct()
     }
     return null;
 }
+
 function updateProduct($product_id, $product_name, $price)
 {
     global $conn;
@@ -81,6 +83,7 @@ function deleProduct($product_id)
         return false;
     }
 }
+
 function addUser($phone_number, $account_name, $account_password)
 {
     global $conn;
