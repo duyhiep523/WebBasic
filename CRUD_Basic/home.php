@@ -168,7 +168,7 @@ if (isset($_POST['btn_dele'])) {
             }
         })
         $(document).on("click", function (event) {
-            if (
+           if (
                 !$("#form_control").is(event.target) &&
                 $("#form_control").has(event.target).length === 0
             ) {

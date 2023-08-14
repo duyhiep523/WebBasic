@@ -1,4 +1,4 @@
-drop database if exists crud_basic ;
+drop database if exists crud_basicproduct ;
 create database crud_basic;
 use crud_basic;
 create table system_users(
@@ -15,12 +15,13 @@ VALUES
 ('123123123','admin3','202cb962ac59075b964b07152d234b70'),
 ('123123123','admin4','202cb962ac59075b964b07152d234b70'),
 ('123123123','admin5','202cb962ac59075b964b07152d234b70');
+select *from system_users;
 create table product(
 product_id int AUTO_INCREMENT ,
 primary key (product_id),
 product_name varchar(50),
 price float,
-create_by varchar(50) ,
+create_by DATETIME default CURRENT_TIMESTAMP ,
 update_by varchar(50) 
 );
 INSERT INTO product (product_name,price)
