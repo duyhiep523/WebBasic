@@ -47,13 +47,17 @@ class Student extends Conn
         $result = $this->connect->query($sql);
         return $result ? true : false;
     }
+    public function searchStudent($key)
+    {
+        $students = null;
+        $sql = "SELECT * FROM `students` WHERE `student_code` like '%$key%' or `full_name` like '%$key%' or `class` like '%$key%' or `mail` like '%$key%'";
+        $result = $this->connect->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $students[] = $row;
+            }
+        }
+        return $students;
+    }
 }
-// $a=new Student();
-// $data=[
 
-//     "student_code"=>"SV1",
-//     // "full_name"=>"NAME",
-//     // "class"=>"1",
-//     // "mail"=>'adsf'
-// ];
-// $a->deleteStudent($data);

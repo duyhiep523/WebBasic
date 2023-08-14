@@ -38,6 +38,7 @@ function loaddata() {
     method: "GET",
     data: {},
     success: function (res) {
+      console.log(res.mail);
       let data = JSON.parse(res);
       if (data != null) {
         if (data.length > 0) {

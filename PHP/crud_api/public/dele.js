@@ -9,7 +9,7 @@ $(document).ready(function () {
       data: dataa,
       dataType: "json",
       success: function (response) {
-        // loaddata();
+        loaddata();
         $("#msg").html(response.message);
       },
       error: function (xhr) {

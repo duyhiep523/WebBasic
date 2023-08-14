@@ -18,6 +18,9 @@
     <button class="btn btn-success mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#modal-add">
       Thêm
     </button>
+    <form class="d-flex mb-3" id="search" method="post">
+      <input class="form-control me-2" id="text_search" type="text" placeholder="Search">
+    </form>
     <div class="modal" id="modal-add">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -63,36 +66,6 @@
         </tr>
       </thead>
       <tbody id="main">
-        <!-- <tr>
-          <td>SV1</td>
-          <td>Hiệp</td>
-          <td>66PM4</td>
-          <td>john@example.com</td>
-          <td>
-            <button class="btn btn-warning update" data-bs-toggle="modal" id="update" data-bs-target="#modal-update">Sửa</button>
-            <button class="btn btn-danger">Xóa</button>
-          </td>
-        </tr>
-        <tr>
-          <td>SV1</td>
-          <td>Hiệp</td>
-          <td>66PM4</td>
-          <td>john@example.com</td>
-          <td>
-            <button class="btn btn-warning update" data-bs-toggle="modal" data-bs-target="#modal-update">Sửa</button>
-            <button class="btn btn-danger">Xóa</button>
-          </td>
-        </tr>
-        <tr>
-          <td>SV1</td>
-          <td>Hiệp</td>
-          <td>66PM4</td>
-          <td>john@example.com</td>
-          <td>
-            <button class="btn btn-warning update" data-bs-toggle="modal" id="update" data-bs-target="#modal-update">Sửa</button>
-            <button class="btn btn-danger">Xóa</button>
-          </td>
-        </tr> -->
       </tbody>
     </table>
   </div>
@@ -113,15 +86,15 @@
               <label for="ID">ID</label>
             </div>
             <div class="form-floating mt-3">
-              <input type="text" class="form-control" id="hoTen-up" name="text"  />
+              <input type="text" class="form-control" id="hoTen-up" name="text" />
               <label for="hoTen">Họ tên</label>
             </div>
             <div class="form-floating mt-3">
-              <input type="text" class="form-control" id="lop-up" name="text"  />
+              <input type="text" class="form-control" id="lop-up" name="text" />
               <label for="lop">Lớp</label>
             </div>
             <div class="form-floating mt-3">
-              <input type="text" class="form-control" id="mail-up" name="text"  />
+              <input type="text" class="form-control" id="mail-up" name="text" />
               <label for="mail">Email</label>
             </div>
             <input type="submit" class="btn btn-success mt-3" value="Cập nhật" />
@@ -134,9 +107,12 @@
   </script>
   <script src="../public/update.js">
   </script>
-    <script src="../public/dele.js">
+  <script src="../public/dele.js">
+  </script>
+  <script src="../public/search.js">
   </script>
 </body>
+
 
 
 </html>
